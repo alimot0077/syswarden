@@ -38,7 +38,12 @@ else
     TMP="$(mktemp -d)"
     trap 'rm -rf "$TMP"' EXIT
     info "Downloading SysWarden ($BRANCH)…"
-    curl -fsSL "https://github.com/$REPO/archive/refs/heads/$BRANCH.tar.gz" | tar -xz -C "$TMP"
+    # codeload is GitHub's archive host; it is reachable on some networks where github.com is not.
+    curl -fsSL --connect-timeout 20 "https://codeload.github.com/$REPO/tar.gz/refs/heads/$BRANCH" -o "$TMP/src.tgz" \
+        || curl -fsSL --connect-timeout 20 "https://github.com/$REPO/archive/refs/heads/$BRANCH.tar.gz" -o "$TMP/src.tgz" \
+        || die "Could not download SysWarden from GitHub. Check your connection (or proxy) and try again."
+    tar -xzf "$TMP/src.tgz" -C "$TMP"
+    rm -f "$TMP/src.tgz"
     SRC="$(find "$TMP" -mindepth 1 -maxdepth 1 -type d | head -n1)"
     [ -f "$SRC/app/main.py" ] || die "Download looks incomplete."
 fi
