@@ -1,0 +1,30 @@
+[Desktop Entry]
+Type=Application
+Name=SysWarden
+GenericName=Task Manager
+GenericName[fa]=مدیر وظایف
+Comment=See what is slowing your computer down: processes, temperatures, startup apps, services and unused software
+Comment[fa]=ببین چه چیزی سیستم را کند و داغ کرده: پروسه‌ها، دما، برنامه‌های شروع خودکار، سرویس‌ها و نرم‌افزارهای بی‌استفاده
+Exec=@BIN@
+Icon=io.github.alimot0077.SysWarden
+Terminal=false
+Categories=System;Monitor;GTK;
+Keywords=task;manager;process;monitor;cpu;memory;temperature;fan;startup;service;kill;cleanup;
+StartupNotify=true
+StartupWMClass=io.github.alimot0077.SysWarden
+Actions=processes;startup;software;
+
+[Desktop Action processes]
+Name=Processes
+Name[fa]=پروسه‌ها
+Exec=@BIN@ --page processes
+
+[Desktop Action startup]
+Name=Startup & Services
+Name[fa]=راه‌اندازی و سرویس‌ها
+Exec=@BIN@ --page startup
+
+[Desktop Action software]
+Name=Software & Cleanup
+Name[fa]=نرم‌افزارها و پاکسازی
+Exec=@BIN@ --page software
