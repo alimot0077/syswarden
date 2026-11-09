@@ -1,0 +1,8 @@
+{
+  "uuid": "syswarden@alimot0077.github.io",
+  "name": "SysWarden",
+  "description": "Quick Settings tile for SysWarden: live CPU and temperature, detected problems (abandoned or runaway processes, overheating, low memory) and one-click fixes. Requires the SysWarden app.",
+  "shell-version": ["46", "47", "48", "49", "50"],
+  "url": "https://github.com/alimot0077/syswarden",
+  "version": 1
+}
